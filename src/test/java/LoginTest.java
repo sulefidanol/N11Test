@@ -1,4 +1,5 @@
 import Base.BaseTest;
+import Pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,28 +8,27 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @Test
-    public void basariliGiris() throws InterruptedException {
-        driver.findElement(By.id("login-email")).sendKeys(email);
-        driver.findElement(By.name("login-password")).sendKeys(password);
-        driver.findElement(By.cssSelector("[class = 'q-primary q-fluid q-button-medium q-button submit']")).click();
-        Thread.sleep(3000);
+    LoginPage loginPage = new LoginPage();
+    MainPage mainPage = new MainPage();
 
-        String  text = driver.findElements(By.cssSelector("[class='link-text']")).get(0).getText();
-        System.out.println(text);
-        Assert.assertEquals(text,"Hesabımm");
+    @Test(description = "Başarılı Kullanıcı Girişi")
+    public void basariliGiris(){
+       loginPage.fillEmail(email)
+                .fillPasword(password)
+                .clickLogin();
+        sleep(3000);
+
+        mainPage.accountControl();
+
     }
 
-    @Test
-    public void basarisizGiris() throws InterruptedException {
-        driver.findElement(By.id("login-email")).sendKeys(email);
-        driver.findElement(By.name("login-password")).sendKeys("Test1234567890.");
-        driver.findElement(By.cssSelector("[class = 'q-primary q-fluid q-button-medium q-button submit']")).click();
-        Thread.sleep(3000);
+    @Test(description = "Başarısız kullanıcı girişi")
+    public void basarisizGiris()  {
+        loginPage.fillEmail(email)
+                .fillPasword("12393849838")
+                .clickLogin();
 
-        String  text = driver.findElements(By.cssSelector("[class='message']")).get(0).getText();
-        System.out.println(text);
-        Assert.assertEquals(text,"E-posta adresiniz ve/veya şifreniz hatalı.");
-
+        sleep(3000);
+        loginPage.errorMessageController("E-posta adresiniz ve/veya şifreniz hatalı.");
     }
 }
