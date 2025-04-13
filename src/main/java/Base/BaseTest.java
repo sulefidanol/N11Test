@@ -12,7 +12,7 @@ public class BaseTest extends BaseLibrary{
     public void openBrowser (){
         driver= new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://www.trendyol.com/giris");
+        driver.get("https://www.n11.com/giris-yap");
     }
 
     @AfterMethod

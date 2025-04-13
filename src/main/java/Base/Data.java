@@ -2,7 +2,7 @@ package Base;
 
 public class Data {
 
-    public String email = "tepasor383@inveitro.com";
-    public String password = "Test1234567890";
+    public String email = "sule_fidanol@hotmail.com";
+    public String password = "Test123";
 
 }

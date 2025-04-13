@@ -1,9 +1,6 @@
 import Base.BaseTest;
 import Pages.LoginPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
+
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
@@ -29,6 +26,6 @@ public class LoginTest extends BaseTest {
                 .clickLogin();
 
         sleep(3000);
-        loginPage.errorMessageController("E-posta adresiniz ve/veya şifreniz hatalı.");
+        loginPage.errorMessageController("E-posta adresi veya şifre hatalı, kontrol edebilir misin?");
     }
 }

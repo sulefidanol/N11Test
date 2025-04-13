@@ -8,8 +8,8 @@ public class MainPage extends BaseTest {
 
     @Step("Hesap bilgisi kontrol edilir")
     public MainPage accountControl(){
-        String  text = driver.findElements(By.cssSelector("[class='link-text']")).get(0).getText();
-        Assert.assertEquals(text,"Hesabım");
+       String  text = driver.findElements(By.cssSelector("[class='user']")).get(0).getText();
+        Assert.assertEquals(text,"ŞF");
         screenshot();
         return this;
     }
